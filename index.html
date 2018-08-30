@@ -8,20 +8,17 @@
     <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css">
     <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css">
     <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
-    <script src="D:\977-341\helloonsenui\indy.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title>Document</title>
 </head>
 
 <body>
-    <ons-tabbar swipeable position="auto">
-        <ons-tab page="home.html" label="Tab 1" icon="ion-home, material:md-home" badge="7" active>
-        </ons-tab>
-        <ons-tab page="setting.html" label="Tab 2" icon="md-settings" active-icon="md-face">
-        </ons-tab>
-        <ons-tab page="about.html" label="Tab 3" icon="md-settings" active-icon="md-face">
-        </ons-tab>
-    </ons-tabbar>
+    <script>
+        document.addEventListener('prechange', function (event) {
+            document.querySelector('ons-toolbar .center')
+                .innerHTML = event.tabItem.getAttribute('label');
+        });
+    </script>
 
     <ons-splitter>
         <ons-splitter-side id="menu" side="left" width="220px" collapse swipeable>
@@ -30,11 +27,8 @@
                     <ons-list-item onclick="fn.load('home.html')" tappable>
                         Home
                     </ons-list-item>
-                    <ons-list-item onclick="fn.load('settings.html')" tappable>
-                        Settings
-                    </ons-list-item>
-                    <ons-list-item onclick="fn.load('about.html')" tappable>
-                        About
+                    <ons-list-item onclick="fn.load('cart.html')" tappable>
+                        Cart
                     </ons-list-item>
                 </ons-list>
             </ons-page>
@@ -42,8 +36,17 @@
         <ons-splitter-content id="content" page="home.html"></ons-splitter-content>
     </ons-splitter>
 
+    <ons-page>
+        <ons-tabbar swipeable position="auto">
+            <ons-tab page="home.html" label="Tab 1" icon="ion-home, material:md-home" badge="7" active>
+            </ons-tab>
+            <ons-tab page="cart.html" label="Tab 2" icon="md-settings" active-icon="md-face">
+            </ons-tab>
+        </ons-tabbar>
+    </ons-page>
+
     <template id="home.html">
-        <ons-page>
+        <ons-page id="Home">
             <ons-toolbar>
                 <div class="left">
                     <ons-toolbar-button onclick="fn.open()">
@@ -51,17 +54,17 @@
                     </ons-toolbar-button>
                 </div>
                 <div class="center">
-                    Main
+                    Home
                 </div>
             </ons-toolbar>
-            <p style="text-align: center; opacity: 0.6; padding-top: 20px;">
-                Swipe right to open the menu!
+            <p style="text-align: center;">
+                This is the first page.
             </p>
         </ons-page>
     </template>
 
-    <template id="settings.html">
-        <ons-page>
+    <template id="cart.html">
+        <ons-page id="Cart">
             <ons-toolbar>
                 <div class="left">
                     <ons-toolbar-button onclick="fn.open()">
@@ -69,24 +72,12 @@
                     </ons-toolbar-button>
                 </div>
                 <div class="center">
-                    Settings
+                    Cart
                 </div>
             </ons-toolbar>
-        </ons-page>
-    </template>
-
-    <template id="about.html">
-        <ons-page>
-            <ons-toolbar>
-                <div class="left">
-                    <ons-toolbar-button onclick="fn.open()">
-                        <ons-icon icon="md-menu"></ons-icon>
-                    </ons-toolbar-button>
-                </div>
-                <div class="center">
-                    About
-                </div>
-            </ons-toolbar>
+            <p style="text-align: center;">
+                This is the first page.
+            </p>
         </ons-page>
     </template>
 </body>
